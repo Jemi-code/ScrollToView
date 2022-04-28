@@ -1,0 +1,75 @@
+@import "standard";
+
+// $myFont: Papyrus, sans-serif;
+// $background: rgb(6, 4, 36);
+// $fontColor: rgba(255, 255, 255, 0.664);
+// $size: 18px;
+// $height: 100vh;
+$flex: flex;
+$flexDir: column;
+$alignJust: center;
+$measure: 4rem;
+
+@mixin transform($property){
+    transform: $property;
+    -webkit-transform: $property;
+    -moz-transform: $property;
+    -ms-transform: $property;
+    -o-transform: $property;
+}
+
+.container{
+    display: $flex;
+    flex-direction: $flexDir;
+    align-items: $alignJust;
+    justify-content: $alignJust;
+}
+
+.section{
+    @extend.container;
+    min-height: $height;
+    margin: 0 $measure;
+    @include transform(translateY(300px));
+    opacity: 0;
+    transition-property: all;
+    transition-timing-function: ease;
+    transition-duration: 1s;
+}
+
+.show{
+    @include transform(translateY(-50px));
+    opacity: 1;
+}
+
+.section{
+    h1{
+               text-align: $alignJust;
+               font-size: $measure;
+               margin-bottom: 2 * $size;
+               @include transform(rotateY(360deg));
+               transition-property: all;
+               transition-duration: 1s;
+               transition-timing-function: ease;
+}
+}
+
+.section{
+    p{
+        color: $fontColor;
+        text-align: $alignJust;
+    }
+}
+
+@media screen and (max-width: 527px){
+    .section{
+        h1{
+            font-size: $measure - 2;
+        }
+    }
+
+    .section{
+        p{
+            font-size: $size - 5;
+        }
+    }
+}
